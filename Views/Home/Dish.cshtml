@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "New Dish";
+}
+
+@model Dish
+
+<div class="text-center">
+    <h1>Add a Dish!</h1>
+    <form action="/addDish" method="post">
+        <div class="form-group">
+            <label asp-for="DishName">Dish Name:</label>
+            <input asp-for="DishName" class="form-control">
+            <span class="text-danger" asp-validation-for="DishName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ChefId">Tastiness:</label>
+            <span class="text-danger" asp-validation-for="ChefId"></span>
+            <select asp-for="ChefId">
+                @foreach (Chef c in ViewBag.Chefs)
+                {
+                    <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="DishCalories"># of Calories:</label>
+            <input asp-for="DishCalories" class="form-control">
+            <span class="text-danger" asp-validation-for="DishCalories"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DishTastiness">Tastiness:</label>
+            <span class="text-danger" asp-validation-for="DishTastiness"></span>
+            <select asp-for="DishTastiness">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description:</label><br>
+            <span class="text-danger" asp-validation-for="Description"></span>
+            <textarea asp-for="Description" cols="155" rows="10"></textarea>
+        </div>
+
+        <input type="submit" value="Add Dish!">
+    </form>
+</div>

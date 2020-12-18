@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="text-center">
+    <a href="/chef" class="btn btn-primary">Add Chef</a>
+    <a href="/dish" class="btn btn-primary">Add Dish</a>
+
+    <h1>Recent Dishes</h1>
+    @foreach (Chef c in ViewBag.AllChefs)
+    {
+        <div class="card col-4">
+            <div class="card-body">
+                <h2 class="card-title text-center">@c.FirstName @c.LastName</h2>
+                <h4 class="card-subtitle text-center"># of Dishes: @c.ChefDishes.Count</h4>
+            </div>
+        </div>
+    }
+
+</div>
